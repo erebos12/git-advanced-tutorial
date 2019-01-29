@@ -5,14 +5,18 @@
 - Atomic working unit is a commit identified by SHA1 hash
 - Branches are "pointers" to a certain commit which you can checkout, create, move, delete. You can have multiple branches pointing to same commit.
 - Tags are fixed "pointers" to a commit.  
+- HEAD is a reference to the last commit in the currently check-out branch. You can think of the HEAD as the "current branch" (`cat .git/HEAD`).
+
 
 ## Tips & Best-Practices
 
-* Use a GIT GUI of your choice (SourceTree, GitKraken) to get an overview over commit history and branches.
+* Use a GIT Repository Browser of your choice (SourceTree, GitKraken etc.) to get an overview over commit history and branches.
 
 * Continuously update your local repo (```git remote update``` / ```git fetch```).
 
 * Prefer ```git fetch``` or ```git remote update``` over ```git pull```
+
+* GIT Manual by command `man git-<command>` i.e. ```man git-rebase```
 
 ## Committing
 
@@ -21,7 +25,22 @@ Amending:
 git commit --amend
 ```
 
+**TBC**
+
 ## Merging vs. Rebasing
+
+### Merging
+
+* git merge combines two branches
+* receiving branch = branch that will be merged into the receiving branch
+
+```
+git checkout receiving-branch # often master
+git merge feature
+```
+
+* **ATTENTION**: Execute ```git fetch``` to pull the latest remote commits.
+
 
 ### Rebasing
 
@@ -39,12 +58,18 @@ git rebase master
 * **Golden rule of git rebase**:  Never use it on public branches. Meaning never rebase master (public branch) onto feature branch.
 
 ### Interactive Rebase
+
+Interactive rebasing gives you the opportunity to alter commits as they are moved to the new branch. By that you can change the branch commit history.
+
 ```
 git checkout feature
 git rebase -i master
 ```
 
-* Interactive rebasing gives you the opportunity to alter commits as they are moved to the new branch. By that you can change the branch commit history.
+```
+git rebase --continue
+git rebase --abort
+```
 
 ### Force Pushing
 ```
@@ -58,12 +83,41 @@ But when changing your own feature branch locally , i.e. by interactive rebase, 
 
 ### git fetch
 
-```git fetch``` really only downloads new data from a remote repository - but it doesn't integrate any of this new data into your working files.
-fetch will never manipulate, destroy, or screw up anything. This means you can never fetch often enough.
+`git fetch` really only downloads new data from a remote repository - but it doesn't integrate any of this new data into your working files. Fetch will never manipulate, destroy, or screw up anything. This means you can never fetch often enough.
 
-## git pull
-```git pull```, in contrast, is used with a different goal in mind: to update your current HEAD branch with the latest changes from the remote server. This means that pull not only downloads new data; it also directly integrates it into your current working copy files.
+### git pull
+
+`git pull`, in contrast, is used with a different goal in mind: to update your current HEAD branch with the latest changes from the remote server. This means that pull not only downloads new data; it also directly integrates it into your current working copy files.
 
 Since "git pull" tries to _**merge**_ remote changes with your local ones, a so-called "merge conflict" can occur.
 
 Like for many other actions, it's highly recommended to start a "git pull" only with a clean working copy. This means that you should not have any uncommitted local changes before you pull.
+
+
+## Reseting current branch - git reset
+
+Resets current HEAD to the specified state (Moving branch).
+
+`git reset [mode] where mode = hard|soft|mixed|merge`
+
+
+## Special moves
+
+### Undo n last commits and redo
+
+`$ git commit ...`
+
+`$ git reset --soft HEAD^n`
+
+### Undo n last commits permanently
+
+`$ git reset --hard HEAD~n`
+
+
+###  Undo a merge inside a dirty working tree
+
+`$ git pull `
+
+`something goes wrong ...`
+
+`$ git reset --merge`
