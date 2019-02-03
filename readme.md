@@ -7,6 +7,17 @@
 - Tags are fixed "pointers" to a commit.  
 - HEAD is a reference to the last commit in the currently check-out branch. You can think of the HEAD as the "current branch" (`cat .git/HEAD`).
 
+## The three stages
+
+Files in a repository go through three stages before being under version control with git:
+
+* Untracked: the file exists, but is not part of git's version control
+* Staged: the file has been added to git's version control but changes have not been committed
+* Committed: the change has been committed
+
+<table><tr><td>
+<img align="center" src="git-staging-diagram.png" title="GIT Stages" width="500">
+</td></tr></table>
 
 ## Tips & Best-Practices
 
@@ -100,12 +111,6 @@ git rebase --continue
 git rebase --abort
 ```
 
-### Force Pushing
-```
-# YOU SHOULD NEVER DO THIS! GIT HOOKS AVOID THIS!
-git push -f origin  master
-```
-
 But when changing your own feature branch locally , i.e. by interactive rebase, which you have pushed before, a `git push -f origin my-private-feature-branch` can be ok. _But be sure what you're doing! You overwrite the feature branch!!!_
 
 ## Updating locally - fetch vs. pull
@@ -130,23 +135,12 @@ Resets current HEAD to the specified state (Moving branch).
 `git reset [mode] where mode = hard|soft|mixed|merge`
 
 
-## Special moves
+## Getting remote
 
-#### Undo n last commits and redo
+### Force Pushing
+```
+# YOU SHOULD NEVER DO THIS! GIT HOOKS AVOID THIS!
+git push -f origin  master
+```
 
-`$ git commit ...`
-
-`$ git reset --soft HEAD^n`
-
-#### Undo n last commits permanently
-
-`$ git reset --hard HEAD~n`
-
-
-####  Undo a merge inside a dirty working tree
-
-`$ git pull `
-
-`something goes wrong ...`
-
-`$ git reset --merge`
+TBC
