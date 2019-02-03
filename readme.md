@@ -16,7 +16,11 @@
 
 * Prefer ```git fetch``` or ```git remote update``` over ```git pull```
 
-* Best tutorials https://git-scm.com/ or https://www.atlassian.com/git/tutorials or ```man git-<command>```
+* Best tutorials:
+  - ```man git-<command>```
+  - https://git-scm.com/
+  - https://www.atlassian.com/git/tutorials
+  - http://gitready.com/
 
 
 ## Committing
@@ -34,7 +38,23 @@ git config --global core.editor vim
 ```
 Advanced committing options with interactive rebase (See "Interactive Rebase").
 
-## Merging vs. Rebasing
+## git reflog
+
+Reflog is a mechanism to record when the tip of branches are updated.
+This command is to manage the information recorded in it. This command shows is a list of commits that Git still has in its storage.  
+See ```man git-reflog``` for more details.
+
+
+## Cherry-pick / Merging / Rebasing
+
+There are 3 ways to bring commits from one branch to another:
+* man git-**cherry-pick**
+* man git-**merge**
+* man git-**rebase**
+
+### Cherry picking
+Pick any commit(s) from another branches and set it on the tip of the HEAD.
+```git cherry-pick <commit>```
 
 ### Merging
 
@@ -53,17 +73,16 @@ git merge branch-to-merge   # often feature branches
 ### Rebasing
 
 ```
+# This moves the entire 'feature' branch to begin on the tip of the 'master' branch
 git checkout feature
 git rebase master
 ```
-
-* This moves the entire _feature_ branch to begin on the tip of the _master_ branch
 
 * The major benefit of rebasing is that you get a much cleaner project history. You get a linear project history.
 
 * **ATTENTION**: Rebasing re-writes the project history by creating brand new commits for each commit in the original branch.
 
-* **Golden rule of git rebase**:  Never use it on public branches. Meaning never rebase master (public branch) onto feature branch.
+* **Golden rule of git rebase**:  Never use it on public branches. Meaning never rebase master (public branch) onto feature branch. Rebase only local feature branches on master!
 
 ### Interactive Rebase
 
@@ -111,18 +130,18 @@ Resets current HEAD to the specified state (Moving branch).
 
 ## Special moves
 
-### Undo n last commits and redo
+#### Undo n last commits and redo
 
 `$ git commit ...`
 
 `$ git reset --soft HEAD^n`
 
-### Undo n last commits permanently
+#### Undo n last commits permanently
 
 `$ git reset --hard HEAD~n`
 
 
-###  Undo a merge inside a dirty working tree
+####  Undo a merge inside a dirty working tree
 
 `$ git pull `
 
