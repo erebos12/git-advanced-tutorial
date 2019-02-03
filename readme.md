@@ -2,7 +2,7 @@
 
 ## Some facts
 
-- Atomic working unit is a commit identified by SHA1 hash
+- Atomic working unit in GIT is a commit identified by SHA1 hash
 - Branches are "pointers" to a certain commit which you can checkout, create, move, delete. You can have multiple branches pointing to same commit.
 - Tags are fixed "pointers" to a commit.  
 - HEAD is a reference to the last commit in the currently check-out branch. You can think of the HEAD as the "current branch" (`cat .git/HEAD`).
@@ -10,36 +10,44 @@
 
 ## Tips & Best-Practices
 
-* Use a GIT Repository Browser of your choice (SourceTree, GitKraken etc.) to get an overview over commit history and branches.
+* Use a GIT Repository Browser of your choice (SourceTree, GitKraken, IDE-Plugins etc.) to get an overview over commit history and branches.
 
 * Continuously update your local repo (```git remote update``` / ```git fetch```).
 
 * Prefer ```git fetch``` or ```git remote update``` over ```git pull```
 
-* GIT Manual by command `man git-<command>` i.e. ```man git-rebase```
+* Best tutorials https://git-scm.com/ or https://www.atlassian.com/git/tutorials or ```man git-<command>```
+
 
 ## Committing
 
-Amending:
-```
-git commit --amend
-```
+#### git commit --amend
+Replace the tip of the current branch by creating a new commit.
+By that you can add changes to the previous commit but a new commit (Hash) will be created.
 
-**TBC**
+#### Commit messages
+Use editor for committing to write commit message instead of ```git commit -m "your message"```.
+By that you can add more comprehensive documentation to your commits.
+Configure your editor of your choice like that:
+```
+git config --global core.editor vim
+```
+Advanced committing options with interactive rebase (See "Interactive Rebase").
 
 ## Merging vs. Rebasing
 
 ### Merging
 
 * git merge combines two branches
-* receiving branch = branch that will be merged into the receiving branch
+* receiving branch = branch that will be merged into
 
 ```
-git checkout receiving-branch # often master
-git merge feature
+git fetch
+git checkout receiving-branch   # often master
+git merge branch-to-merge   # often feature branches
 ```
 
-* **ATTENTION**: Execute ```git fetch``` to pull the latest remote commits.
+* **ATTENTION**: Execute ```git fetch``` to get the latest remote commits before merging.
 
 
 ### Rebasing
