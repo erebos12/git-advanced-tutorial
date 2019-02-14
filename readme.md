@@ -177,6 +177,10 @@ But when changing your own feature branch locally , i.e. by interactive rebase, 
 
 * **git pull** - will update and merge any remote changes of the current branch. This will change your local state! (`git pull = git fetch + git merge.`). See also [Fast-Forward Merge](#merge_ff)
 
+**_My recommendation_:**
+
+* Use `git pull --rebase` or `git remote update` and `git rebase origin/<branch_to_rebase_on>` or ```git config --global branch.autosetuprebase always```. This avoids a merge commit and keeps your changes on top of the master branch with linear history. Yet you still have to resolve any occurring merge conflicts.
+
 <a name="merge_ff"></a>
 #### Fast-Forward Merge
 
