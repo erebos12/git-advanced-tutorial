@@ -175,7 +175,17 @@ But when changing your own feature branch locally , i.e. by interactive rebase, 
 
 * **git fetch** - will update only the branch you're on, but not merge any changes in (`git remote update = git fetch --all`).
 
-* **git pull** - will update and merge any remote changes of the current branch you're on (`git pull = git fetch + git merge.`).
+* **git pull** - will update and merge any remote changes of the current branch. This will change your local state! (`git pull = git fetch + git merge.`). See also [Fast-Forward Merge](#merge_ff)
+
+<a name="merge_ff"></a>
+#### Fast-Forward Merge
+
+* Git by default will try to merge a branch in a fast-forward mode which looks in the end like a `rebase`. BUT when you encounter merge-conflicts during pull, GIT will create
+a merge-commit.
+* Non fast-forward merge keeps the notion of explicit branches . It may complicate the commit history with its non-linear outcome at the price of preserving the source of the branches.
+* Fast-forward merge keeps the change-sets in a linear history, making it easier to use other tools (log, blame)
+* More on Merge fast-forward https://ariya.io/2013/09/fast-forward-git-merge
+
 
 <a name="tips"></a>
 ## Tips & Best-Practices
