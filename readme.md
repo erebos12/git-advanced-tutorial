@@ -205,6 +205,8 @@ a merge-commit.
 * Continuously update your local repo (`git remote update` / `git fetch`).
 
 * Commit early and often, even when changes are not final! In case the commit history looks shabby, you know now how to fix that ;-) (`git rebase -i HEAD~x`)
+  - **_Rule-of-thumb_**: Commit every time when you reached a clean state (e.g. running tests). Do the commit in the same way you would press Ctrl+S in your editor!
+
 
 * Best tutorials:
   - `man git-<command>`
