@@ -108,16 +108,12 @@ Pick any commit(s) from another branches and set it on the tip of the HEAD.
 <a name="merging"></a>
 ### Merging
 
-* git merge combines two branches by one merge commit
-* receiving branch = branch that will be merged into
+See `man git-merge`
 
-```
-git fetch
-git checkout receiving-branch   # often master
-git merge branch-to-merge   # often feature branches
-```
+<table><tr><td>
+<img align="center" src="git_merge.png" title="GIT Stages" width="550">
+</td></tr></table>
 
-* **ATTENTION**: Execute `git fetch` to get the latest remote commits before merging.
 
 <a name="rebasing"></a>
 ### Rebasing
