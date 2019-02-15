@@ -227,6 +227,4 @@ alias gru='git remote update'
 alias grc='git rebase --continue'
 alias grm='git rebase origin/master'
 alias gp='git pull --rebase origin master'
-# to set globally rebase instead of merge for git pull:
-git config --global branch.autosetuprebase always
 ```
