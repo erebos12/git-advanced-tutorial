@@ -124,6 +124,10 @@ git merge branch-to-merge   # often feature branches
 
 git-rebase sets HEAD with all commits from common base to the tip of another branch.
 
+<table><tr><td>
+<img align="center" src="rebase.png" title="GIT Stages" width="750">
+</td></tr></table>
+
 ```
 # This moves the entire 'feature' branch to begin on the tip of the 'master' branch
 git checkout feature
