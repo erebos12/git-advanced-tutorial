@@ -20,6 +20,7 @@
   - [Force Pushing](#force_push)
   - [Sync local with remote](#updating)
 - [Tips & Best-Practices](#tips)
+  - [Useful GIT aliases](#git_aliases)
 <!-- /TOC -->
 
 <a name="some_facts"></a>
@@ -211,6 +212,7 @@ a merge-commit.
   - https://www.atlassian.com/git/tutorials
   - http://gitready.com/
 
+<a name="git_aliases"></a>
 ### Useful GIT aliases
 
 Put these aliases into your profile file (i.e. .bash_profile).
