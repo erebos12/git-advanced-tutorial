@@ -122,26 +122,20 @@ git merge branch-to-merge   # often feature branches
 <a name="rebasing"></a>
 ### Rebasing
 
-git-rebase sets HEAD with all commits from common base to the tip of another branch.
+git-rebase sets HEAD (here **feature**) with all commits from common base (here base commit is **B**) to the tip of another branch (here **master**).
 
 <table><tr><td>
 <img align="center" src="rebase.png" title="GIT Stages" width="750">
 </td></tr></table>
 
 ```
-# This moves the entire 'feature' branch to begin on the tip of the 'master' branch
 git checkout feature
 git rebase master
 ```
-
-* The major benefit of rebasing is that you get a much cleaner project history. You get a linear project history.
-
-* **ATTENTION**: Rebasing re-writes the project history by creating brand new commits for each commit in the original branch.
-
-* **Golden rule of git rebase**:  Never use it on public branches. Meaning never rebase master (public branch) onto feature branch. Rebase only local feature branches on master!
-
 In case of merge conflict during rebase, resolve conflict, add file and then continue with `git rebase --continue`.
 If you want to abort the rebase then use `git rebase --abort`.
+
+* The major benefit of rebasing is that you get a much cleaner project history. You get a linear project history.
 
 <a name="interactive_rebase"></a>
 #### Interactive Rebase
