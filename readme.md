@@ -149,7 +149,9 @@ By interactive rebase you can change your local commit history.
 # interactive rebase for the last 3 commits of HEAD
 git rebase -i HEAD~3
 ```
-
+<table><tr><td>
+<img align="center" src="git_rebase_interactive.png" title="GIT Stages" width="400">
+</td></tr></table>
 
 <a name="getting_remote"></a>
 ## Getting remote
