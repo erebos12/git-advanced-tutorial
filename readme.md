@@ -207,10 +207,28 @@ a merge-commit.
 
 * Continuously update your local repo (`git remote update` / `git fetch`).
 
-* Commit often, even when changes are not final! You can use `git commit --amend` for that.
+* Commit early and often, even when changes are not final! In case the commit history looks shabby, you know now how to fix that ;-) (`git rebase -i HEAD~x`)
 
 * Best tutorials:
   - `man git-<command>`
   - https://git-scm.com/
   - https://www.atlassian.com/git/tutorials
   - http://gitready.com/
+
+### Useful GIT aliases
+
+Put these aliases into your profile file (i.e. .bash_profile).
+
+```
+# git aliases
+alias gk='gitk --all'
+alias gs='git status'
+alias gca='git commit --amend'
+alias gb='git branch -v && git remote -v show'
+alias gru='git remote update'
+alias grc='git rebase --continue'
+alias grm='git rebase origin/master'
+alias gp='git pull --rebase origin master'
+# to set globally rebase instead of merge for git pull:
+git config --global branch.autosetuprebase always
+```
