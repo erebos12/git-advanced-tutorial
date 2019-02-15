@@ -146,8 +146,8 @@ git rebase -i master
 By interactive rebase you can change your local commit history.
 
 ```
-# interactive rebase for the last 3 commits of HEAD
-git rebase -i HEAD~3
+# interactive rebase for the last 2 commits of HEAD
+git rebase -i HEAD~2
 ```
 <table><tr><td>
 <img align="center" src="git_rebase_interactive.png" title="GIT Stages" width="400">
