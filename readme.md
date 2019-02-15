@@ -177,10 +177,6 @@ But when changing your own feature branch locally , i.e. by interactive rebase, 
 
 * **git pull** - will update and merge any remote changes of the current branch. This will change your local state! (`git pull = git fetch + git merge.`). See also [Fast-Forward Merge](#merge_ff)
 
-**_My recommendation_:**
-
-* Use `git pull --rebase` or `git remote update` and `git rebase origin/<branch_to_rebase_on>` or ```git config --global branch.autosetuprebase always```. This avoids a merge commit and keeps your changes on top of the master branch with linear history. Yet you still have to resolve any occurring merge conflicts.
-
 <a name="merge_ff"></a>
 #### Fast-Forward Merge
 
@@ -188,8 +184,16 @@ But when changing your own feature branch locally , i.e. by interactive rebase, 
 a merge-commit.
 * Non fast-forward merge keeps the notion of explicit branches . It may complicate the commit history with its non-linear outcome at the price of preserving the source of the branches.
 * Fast-forward merge keeps the change-sets in a linear history, making it easier to use other tools (log, blame)
-* More on Merge fast-forward https://ariya.io/2013/09/fast-forward-git-merge
 
+<table><tr><td>
+<img align="center" src="merge-ff-no-ff.png" title="GIT Stages" width="400">
+</td></tr></table>
+
+* More on [Merge-Fast-Forward](https://ariya.io/2013/09/fast-forward-git-merge)
+
+**_My recommendation_:**
+
+* Use `git pull --rebase` or `git remote update` and `git rebase origin/<branch_to_rebase_on>` or ```git config --global branch.autosetuprebase always```. This avoids a merge commit and keeps your changes on top of the master branch with linear history. Yet you still have to resolve any occurring merge conflicts.
 
 <a name="tips"></a>
 ## Tips & Best-Practices
