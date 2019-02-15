@@ -137,7 +137,7 @@ git rebase master
 * **Golden rule of git rebase**:  Never use it on public branches. Meaning never rebase master (public branch) onto feature branch. Rebase only local feature branches on master!
 
 In case of merge conflict during rebase, resolve conflict, add file and then continue with `git rebase --continue`.
-If you want to abort the interactive rebase then use `git rebase --abort`.
+If you want to abort the rebase then use `git rebase --abort`.
 
 <a name="interactive_rebase"></a>
 #### Interactive Rebase
