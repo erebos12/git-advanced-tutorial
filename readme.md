@@ -36,7 +36,7 @@
 
 Files in a repository go through three stages before being under version control with git:
 
-* Untracked: the file exists, but is not part of git's version control
+* Unstaged: file under git's version control and changes are not added to staged area (local unstaged changes)
 * Staged: the file has been added to git's version control but changes have not been committed
 * Committed: the change has been committed
 
