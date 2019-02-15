@@ -119,7 +119,7 @@ See `man git-merge`
 <a name="rebasing"></a>
 ### Rebasing
 
-git-rebase sets HEAD (here **feature**) with all commits from common base (here base commit is **B**) to the tip of another branch (here **master**).
+git-rebase sets HEAD (here **feature** with commit **E** and **F**) with all commits from common base (here base commit is **B**) to the tip of another branch (here commit **D** of master).
 
 <table><tr><td>
 <img align="center" src="rebase.png" title="GIT Stages" width="750">
