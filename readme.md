@@ -146,6 +146,13 @@ Interactive rebasing gives you the opportunity to alter commits as they are move
 git checkout feature
 git rebase -i master
 ```
+By interactive rebase you can change your local commit history.
+
+```
+# interactive rebase for the last 3 commits of HEAD
+git rebase -i HEAD~3
+```
+
 
 <a name="getting_remote"></a>
 ## Getting remote
