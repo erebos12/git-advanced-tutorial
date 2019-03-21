@@ -1,15 +1,16 @@
-# Advanced GIT
+# GIT
 
 
 ## Table of Content
 <!-- TOC depthFrom:3 -->
-- [Some facts](#some_facts)
+- [What is a Version Control Systems](#vcs)
+- [Some facts about GIT ](#some_facts)
 - [The three stages](#three_stages)
 - [Committing](#committing)
   - [git commit --amend](#amend)
   - [Commit messages](#commit_messages)
-- [Moving branches](#git_reset)
-- [Forensics with git reflog](#reflog)
+- [Branch Basics](#branches)
+  - [Moving branches](#git_reset)
 - [Bringing branches together](#cp_m_r)
   - [Cherry Pick](#cherry_pick)
   - [Merging](#merging)
@@ -19,12 +20,21 @@
   - [Push to remote branch](#push_remote)
   - [Force Pushing](#force_push)
   - [Sync local with remote](#updating)
+- [Forensics with git reflog](#reflog)
 - [Tips & Best-Practices](#tips)
   - [Useful GIT aliases](#git_aliases)
 <!-- /TOC -->
 
+<a name="vcs"></a>
+## What is a Version Control Systems
+
+* Version control systems are a category of software tools that help a software team manage changes to source code over time.
+* Version control software keeps track of every modification to the code in a special kind of database.
+* If a mistake is made, developers can turn back the clock and compare earlier versions of the code to help fix the mistake while minimizing disruption to all team members.
+* See [Git Tutorial Atlassian](https://www.atlassian.com/git/tutorials/what-is-version-control)
+
 <a name="some_facts"></a>
-## Some facts
+## Some facts about GIT
 
 - Atomic working unit in GIT is a commit identified by SHA1 hash
 - Branches are "pointers" to a certain commit which you can checkout, create, move, delete. You can have multiple branches pointing to same commit.
@@ -47,6 +57,14 @@ Files in a repository go through three stages before being under version control
 <a name="committing"></a>
 ## Committing
 
+```
+$ git add .    
+$ git commit  
+```
+
+**_Rule-of-thumb_**: Commit every time when you reached a clean state (e.g. running tests). Do the commit in the same way you would press Ctrl+S in your editor!
+
+
 <a name="commit_messages"></a>
 #### Commit messages
 Use editor for committing to write commit message instead of `git commit -m "your message"`.
@@ -65,8 +83,17 @@ By that you can add changes to the previous commit but a new commit (Hash) will 
 
 Advanced committing options with interactive rebase (See "Interactive Rebase").
 
+<a name="branches"></a>
+## Branch Basics
+
+`git branch -b <name>`
+
+`git branch -d <name>`
+
+TBC
+
 <a name="git_reset"></a>
-## Moving branches
+### Moving branches
 
 `git reset` moves current HEAD to the specified state (Moving branch to a specific commit). With options you can specify what happens to the changes/commits during reset.
 
@@ -75,23 +102,6 @@ Advanced committing options with interactive rebase (See "Interactive Rebase").
 * hard = changes will be removed
 * soft = changes will kept staged
 * mixed = changes will be kept unstaged
-
-
-<a name="reflog"></a>
-## Forensics with git reflog
-
-Reflog is a mechanism to record when the tip of branches are updated.
-This command is to manage the information recorded in it. This command shows is a list of commits that Git still has in its storage.  
-See `man git-reflog` for more details.
-
-With `git reflog --all` you can see all reference modifications from you local repository. By that you can rescue "lost" commits which might be "invisible" after resetting branches accidentally.
-```
-$ git reflog --all  # find commit ID of your lost commit -> here ba7abb5
-...
-$ git checkout -b my-branch ba7abb5
-Switched to a new branch 'my-branch'  # YEAH, rescued
-```
-
 
 <a name="cp_m_r"></a>
 ## Bringing branches together
@@ -198,6 +208,23 @@ a merge-commit.
 **_My recommendation_:**
 
 * Use `git pull --rebase` or `git remote update` and `git rebase origin/<branch_to_rebase_on>` or ```git config --global branch.autosetuprebase always```. This avoids a merge commit and keeps your changes on top of the master branch with linear history. Yet you still have to resolve any occurring merge conflicts.
+
+<a name="reflog"></a>
+## Forensics with git reflog
+
+Reflog is a mechanism to record when the tip of branches are updated.
+This command is to manage the information recorded in it. This command shows is a list of commits that Git still has in its storage.  
+See `man git-reflog` for more details.
+
+With `git reflog --all` you can see all reference modifications from you local repository. By that you can rescue "lost" commits which might be "invisible" after resetting branches accidentally.
+```
+$ git reflog --all  # find commit ID of your lost commit -> here ba7abb5
+...
+$ git checkout -b my-branch ba7abb5
+Switched to a new branch 'my-branch'  # YEAH, rescued
+```
+
+
 
 <a name="tips"></a>
 ## Tips & Best-Practices
