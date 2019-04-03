@@ -36,29 +36,40 @@
 <a name="some_facts"></a>
 ## Some facts about GIT
 
-- Atomic working unit in GIT is a commit identified by SHA1 hash
-- Branches are "pointers" to a certain commit which you can checkout, create, move, delete. You can have multiple branches pointing to same commit.
-- Tags are fixed "pointers" to a commit.  
-- HEAD is a reference to the last commit in the currently check-out branch. You can think of the HEAD as the "current branch" (`cat .git/HEAD`).
+- Atomic working unit in GIT is a _**commit**_ identified by SHA1 hash
+- _**Branches**_ are "pointers" to a certain commit. You can checkout, create, move, delete branches.
+- _**HEAD**_ is a reference to the last commit in the currently check-out branch. You can think of the HEAD as the "current branch" (`cat .git/HEAD`).
+- _**Tags**_ are fixed "pointers" to a commit.  
+
 
 <a name="three_stages"></a>
 ## The three stages
 
-Files in a repository go through three stages before being under version control with git:
+Files in a repository go through _**three stages**_ before being under version control with git:
 
-* Unstaged: file under git's version control and changes are not added to staged area (local unstaged changes)
-* Staged: the file has been added to git's version control but changes have not been committed
-* Committed: the change has been committed
+* _**Unstaged**_: file under git's version control and changes are not added to staged area (local unstaged changes)
+* _**Staged**_: the file has been added to git's version control but changes have not been committed
+* _**Committed**_: the change has been committed
+
+A special state is `Untracked`. These files are not (yet) under GIT's version control.
+
 
 <table><tr><td>
 <img align="center" src="git-staging-diagram.png" title="GIT Stages" width="500">
 </td></tr></table>
 
+### Figuring out in what stage you are
+
+`git status`
+* Shows unstaged, staged and untracked files
+* Once you have committed you need to use `git log` or GIT Repository Browser.
+
+
 <a name="committing"></a>
 ## Committing
 
 ```
-$ git add .    
+$ git add <files>
 $ git commit  
 ```
 
@@ -86,11 +97,39 @@ Advanced committing options with interactive rebase (See "Interactive Rebase").
 <a name="branches"></a>
 ## Branch Basics
 
-`git branch -b <name>`
+**Note:** You always have checked out a certain commit (see HEAD)!
 
-`git branch -d <name>`
+**_It's Best-Practice to have always a (local) branch pointing to your checked out commit._**
 
-TBC
+## Why branches ?
+
+* Different branches can point to different commits but you always have checked out just commit!
+* With branches you can easily switch between different commits of your source-code (_switch versions_).
+
+### List branches
+
+`git branch [-v]`
+* will list all local branches
+* -v = verbose showing commit infos
+
+### Create new branches
+
+`git checkout -b new_branch_name`
+* will update HEAD to set the specified branch (here `new_branch_name`) as the current branch
+
+### Checkout existing branch
+
+`git checkout existing_branch_name`
+* You need to know what branch to checkout. Use `git branch [-v]` for that!
+
+### Delete branches
+
+`git branch -d branch_name`
+
+* The -d option stands for --delete, which would delete the local branch, only if you have already pushed and merged it with your remote branches.
+
+`git branch -D branch_name`
+* The -D option stands for --delete --force, which deletes the branch regardless of its push and merge status, so be careful using this one!
 
 <a name="git_reset"></a>
 ### Moving branches
