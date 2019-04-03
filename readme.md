@@ -10,7 +10,6 @@
   - [git commit --amend](#amend)
   - [Commit messages](#commit_messages)
 - [Branch Basics](#branches)
-  - [Moving branches](#git_reset)
 - [Bringing branches together](#cp_m_r)
   - [Cherry Pick](#cherry_pick)
   - [Merging](#merging)
